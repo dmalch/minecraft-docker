@@ -15,7 +15,10 @@ RUN SERVER_URL=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifes
     curl -o /opt/minecraft/minecraft_server.jar $SERVER_URL
 
 ADD opt/minecraft/eula.txt /opt/minecraft/eula.txt
+ADD opt/minecraft/start.sh /opt/minecraft/start.sh
+
+RUN chmod +x /opt/minecraft/start.sh
 
 WORKDIR /opt/minecraft/
 
-CMD ["java", "-jar", "-Xms2G", "-Xmx2G", "/opt/minecraft/minecraft_server.jar"]
+CMD ["bash", "-c", "/opt/minecraft/start.sh"]
