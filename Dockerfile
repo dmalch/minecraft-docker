@@ -28,4 +28,6 @@ ENV S3_BUCKET=
 ENV JAVA_MEMORY_OPTIONS="-XX:InitialRAMPercentage=75 -XX:MaxRAMPercentage=75"
 ENV JAVA_OPTIONS=""
 
+SHELL ["/bin/bash", "-c"]
+
 CMD ["bash", "-c", "/opt/minecraft/start.sh"]
