@@ -16,6 +16,9 @@ RUN SERVER_URL=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifes
 
 ADD opt/minecraft/eula.txt /opt/minecraft/eula.txt
 ADD opt/minecraft/start.sh /opt/minecraft/start.sh
+ADD opt/minecraft/ops.json /opt/minecraft/ops.json
+ADD opt/minecraft/server.properties /opt/minecraft/server.properties
+ADD opt/minecraft/server-icon.png /opt/minecraft/server-icon.png
 
 RUN chmod +x /opt/minecraft/start.sh
 
