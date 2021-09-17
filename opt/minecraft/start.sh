@@ -8,6 +8,7 @@ if [ ! -z "$S3_BUCKET" ]; then
     cat <<CRON >/etc/cron.d/minecraft
 */5 * * * * root aws s3 sync /opt/minecraft s3://$S3_BUCKET
 CRON
+    service cron start
 fi
 
 java -jar ${JAVA_MEMORY_OPTIONS} ${JAVA_OPTIONS} /opt/minecraft/minecraft_server.jar

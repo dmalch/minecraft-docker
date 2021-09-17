@@ -1,7 +1,7 @@
 FROM adoptopenjdk:16-jre-hotspot
 
 RUN apt-get update
-RUN apt-get -yq install awscli jq
+RUN apt-get -yq install awscli jq cron
 
 RUN mkdir /opt/minecraft
 
