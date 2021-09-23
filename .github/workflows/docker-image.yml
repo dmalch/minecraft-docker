@@ -54,7 +54,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: minecraft-server
+          ECR_REPOSITORY: itzg-minecraft-server
           IMAGE_TAG: latest
         run: |
           cd ultra-image
