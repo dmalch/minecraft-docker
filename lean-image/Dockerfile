@@ -1,7 +1,7 @@
 FROM adoptopenjdk:16-jre-hotspot
 
 RUN apt-get update
-RUN apt-get -yq install awscli jq cron
+RUN apt-get -yq install awscli jq
 
 RUN mkdir /opt/minecraft
 
@@ -14,17 +14,16 @@ RUN SERVER_URL=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifes
     # And finally download it to our local MC dir
     curl -o /opt/minecraft/minecraft_server.jar $SERVER_URL
 
-ADD opt/minecraft/eula.txt /opt/minecraft/eula.txt
-ADD opt/minecraft/start.sh /opt/minecraft/start.sh
-ADD opt/minecraft/ops.json /opt/minecraft/ops.json
-ADD opt/minecraft/server.properties /opt/minecraft/server.properties
-ADD opt/minecraft/server-icon.png /opt/minecraft/server-icon.png
+COPY opt/minecraft/eula.txt /opt/minecraft/eula.txt
+COPY opt/minecraft/start.sh /opt/minecraft/start.sh
+COPY opt/minecraft/ops.json /opt/minecraft/ops.json
+COPY opt/minecraft/server.properties /opt/minecraft/server.properties
+COPY opt/minecraft/server-icon.png /opt/minecraft/server-icon.png
 
 RUN chmod +x /opt/minecraft/start.sh
 
 WORKDIR /opt/minecraft/
 
-ENV S3_BUCKET=
 ENV JAVA_MEMORY_OPTIONS="-XX:InitialRAMPercentage=75 -XX:MaxRAMPercentage=75"
 ENV JAVA_OPTIONS=""
 

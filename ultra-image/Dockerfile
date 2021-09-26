@@ -1,19 +1,17 @@
 FROM itzg/minecraft-server:latest
 
 RUN apt-get update
-RUN apt-get -yq install awscli jq cron
+RUN apt-get -yq install awscli jq
 
-ADD data/eula.txt /data/eula.txt
-ADD data/ops.json /data/ops.json
-ADD data/server.properties /data/server.properties
-ADD data/server-icon.png /data/server-icon.png
-ADD start_cron.sh /start_cron.sh
-ADD start_customized.sh /start_customized.sh
-ADD start-finalExec /start-finalExec
+COPY data/eula.txt /data/eula.txt
+COPY data/ops.json /data/ops.json
+COPY data/server.properties /data/server.properties
+COPY data/server-icon.png /data/server-icon.png
+COPY start_customized.sh /start_customized.sh
+COPY start-finalExec /start-finalExec
 
 RUN chmod 666 /data/ops.json
 RUN chmod 666 /data/server.properties
-RUN chmod +x /start_cron.sh
 RUN chmod +x /start_customized.sh
 RUN chmod +x /start-finalExec
 
